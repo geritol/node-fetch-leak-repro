@@ -1,4 +1,5 @@
 const fetch = require('node-fetch');
+const memwatch = require('memwatch-next');
 
 async function checkEndpoint(endpointURL) {
 	let fetchResult;
@@ -29,3 +30,7 @@ function checkEndpoints(){
 }
 
 setInterval(checkEndpoints, 1000);
+
+memwatch.on('leak', (info) => {
+  console.error('Memory leak detected:\n', info);
+});
