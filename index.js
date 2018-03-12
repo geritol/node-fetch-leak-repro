@@ -29,7 +29,9 @@ function checkEndpoints(){
 	endpoints.forEach( endpoint => checkEndpoint(endpoint));
 }
 
-setInterval(checkEndpoints, 1000);
+for (let i = 0; i <= 60000; i += 1000) {
+	setTimeout(checkEndpoints, i);
+}
 
 memwatch.on('leak', (info) => {
   console.error('Memory leak detected:\n', info);
